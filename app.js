@@ -1,4 +1,4 @@
-var app = angular.module('contactList', ['ngResource']);
+var app = angular.module('contactList', ['ngResource', 'ui.bootstrap']);
 
 app.controller('mainController', ['$scope', '$filter', function($scope, $filter) {
 

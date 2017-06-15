@@ -26,7 +26,7 @@
 
     <div ng-controller="mainController">
 
-      <table class="table table-striped">
+      <table class="table table-striped table-responsive">
         <thead>
           <tr>
             <th class="col-md-1"><!-- Profile picture --></th>
@@ -36,8 +36,8 @@
             <th class="col-md-1">Phone</th>
             <th class="col-md-1">Birthdate</th>
             <th class="col-md-1">Groups</th>
-            <th class="col-md-5">Comments</th>
-            <th><!-- Edit --></th>
+            <th class="col-md-4">Comments</th>
+            <th class="col-md-2"><!-- Edit --></th>
           </tr>
         </thead>
 
@@ -53,7 +53,19 @@
             <td>01/01/1900</td>
             <td>family</td>
             <td>Bacon ipsum dolor amet picanha leberkas turkey pork belly shank prosciutto kielbasa doner. Capicola turducken ribeye, andouille tenderloin leberkas shoulder frankfurter corned beef beef brisket cow porchetta meatloaf.</td>
-            <td><button class="btn">Edit</button></td>
+            <td>
+              <div class="btn-group" uib-dropdown>
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-primary" uib-dropdown-toggle>
+                  <span class="caret"></span>
+                  <span class="sr-only">Split button!</span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                  <li role="edit"><a href="#">Edit</a></li>
+                  <li role="delete"><a href="#">Delete</a></li>
+                </ul>
+              </div>
+            </td>
           </tr>
           <tr>
             <td>
@@ -66,7 +78,19 @@
             <td></td>
             <td>family, friend</td>
             <td>Cow ground round sirloin, pork cupim burgdoggen boudin drumstick pig short ribs t-bone porchetta tenderloin beef ribs. Ball tip swine flank venison shank.</td>
-            <td><button class="btn">Edit</button></td>
+            <td>
+              <div class="btn-group" uib-dropdown>
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-primary" uib-dropdown-toggle>
+                  <span class="caret"></span>
+                  <span class="sr-only">Split button!</span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                  <li role="edit"><a href="#">Edit</a></li>
+                  <li role="delete"><a href="#">Delete</a></li>
+                </ul>
+              </div>
+            </td>
           </tr>
           <tr>
             <td>
@@ -79,7 +103,19 @@
             <td>01/01/1900</td>
             <td>colleage, associate</td>
             <td>Capicola turducken ribeye, andouille tenderloin leberkas shoulder frankfurter corned beef beef brisket cow porchetta meatloaf. </td>
-            <td><button class="btn">Edit</button></td>
+            <td>
+              <div class="btn-group" uib-dropdown>
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-primary" uib-dropdown-toggle>
+                  <span class="caret"></span>
+                  <span class="sr-only">Split button!</span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                  <li role="edit"><a href="#">Edit</a></li>
+                  <li role="delete"><a href="#">Delete</a></li>
+                </ul>
+              </div>
+            </td>
           </tr>
           <tr>
             <td>
@@ -92,7 +128,19 @@
             <td></td>
             <td>associate</td>
             <td></td>
-            <td><button class="btn">Edit</button></td>
+            <td>
+              <div class="btn-group" uib-dropdown>
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-primary" uib-dropdown-toggle>
+                  <span class="caret"></span>
+                  <span class="sr-only">Split button!</span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+                  <li role="edit"><a href="#">Edit</a></li>
+                  <li role="delete"><a href="#">Delete</a></li>
+                </ul>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
