@@ -1,42 +1,21 @@
 var app = angular.module('contactList', ['ngRoute', 'ui.bootstrap']);
 
-app.controller('mainController', ['$scope', 'contacts', function($scope, contacts) {
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  console.log('routes js');
+  $routeProvider
+    .when('/', {
+      templateUrl: 'views/contactList.html',
+      controller: 'contactListController'
+    })
+    .when('/add', {
+      templateUrl: 'views/contactEdit.html',
+      controller: 'contactEditController'
+    })
+    .when('/edit/:contact_id', {
+      templateUrl: 'views/contactEdit.html',
+      controller: 'contactEditController'
+    })
+    .otherwise('/');
 
-  // Handle pagination
-  $scope.totalItems = 0;
-  $scope.currentPage = 1;
-
-  $scope.pageChanged = function() {
-    var start = $scope.currentPage * 10 - 1;
-    $scope.currentPageContacts = $scope.contacts.slice(start, start + 10);
-  };
-
-  $scope.getGroups = function(contactGroups) {
-    var groups = [];
-
-    for (var group in contactGroups) {
-      if (contactGroups[group]) {
-        groups.push(group);
-      }
-    }
-
-    return groups.join(', ');
-  }
-
-  // List of all contacts
-  $scope.contacts = [];
-
-  // List of current page contacts
-  $scope.currentPageContacts = [];
-
-  // Get initial contacts
-  contacts.getContacts()
-    .then(function(contacts) {
-      $scope.$apply(function() {
-        $scope.totalItems = contacts.length;
-        $scope.contacts = contacts;
-        $scope.currentPageContacts = contacts;
-      });
-    });
-
+  $locationProvider.html5Mode(true);
 }]);

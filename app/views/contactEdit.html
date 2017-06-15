@@ -1,4 +1,66 @@
 <div>
+
   <h1 ng-if="contact_id">contactEditController: {{ contact_id }}</h1>
-  <h1 ng-if="data">{{ data }}</h1>
+
+  <form ng-submit="submitContactForm()" role="form">
+    <div class="row">
+      <div class="form-group col-md-3">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" ng-model="contact.firstName" placeholder="First Name">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" ng-model="contact.lastName" placeholder="Last Name">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" ng-model="contact.email" placeholder="Email Address">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="phone">Phone Number</label>
+        <input type="text" class="form-control" ng-model="contact.phone" placeholder="Phone Number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3">
+        <label for="birthdate">Birthdate</label>
+        <input type="date" class="form-control" ng-model="contact.birthdate" />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="profile-picture">Profile Picture</label>
+        <input type="text" class="form-control" ng-model="contact.profile_picture" placeholder="https://upload.wikimedia.org/wikipedia/commons/b/b9/CyprusShorthair.jpg">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-5">
+        <label for="groups">Groups</label>
+        <div>
+          <label class="checkbox-inline"><input type="checkbox" ng-model="groups.family" />Family</label>
+          <label class="checkbox-inline"><input type="checkbox" ng-model="groups.friend" />Friend</label>
+          <label class="checkbox-inline"><input type="checkbox" ng-model="groups.colleague" />Colleague</label>
+          <label class="checkbox-inline"><input class="group-checkbox" type="checkbox" ng-model="groups.associate" />Associate</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-5">
+        <label for="comments">Comments</label>
+        <textarea class="form-control" ng-model="contact.comments" rows="4"></textarea>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <input type="submit" value="Save" class="btn btn-primary col-md-offset-4" />
+      <input type="reset" value="Reset" ng-click="resetForm()" class="btn btn-danger" />
+      <a href="/"><button class="btn btn-primary">Cancel</button></a>
+    </div>
+
+  </form>
+
 </div>
