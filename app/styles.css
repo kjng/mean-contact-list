@@ -5,8 +5,3 @@
 .table > tbody > tr > td {
   vertical-align: middle;
 }
-
-.group-checkbox {
-  display: inline-block;
-  padding-right: 5px;
-}
