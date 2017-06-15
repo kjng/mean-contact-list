@@ -7,4 +7,11 @@ app.controller('contactEditController', ['$scope', '$routeParams', function($sco
     console.log($scope.contact);
   }
 
+  $scope.cancel = function(event) {
+    var confirmation = confirm('Are you sure you want to cancel?')
+    if (!confirmation) {
+      event.preventDefault();
+    }
+  }
+
 }]);
