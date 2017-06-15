@@ -5,3 +5,7 @@
 .table > tbody > tr > td {
   vertical-align: middle;
 }
+
+.dropdown-menu > li > a.contact-delete {
+  color: #D70000; !important
+}

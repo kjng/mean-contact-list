@@ -36,12 +36,14 @@
             </button>
             <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
               <li role="edit"><a ng-href="/edit/{{ contact._id }}">Edit</a></li>
-              <li role="delete"><a href="" ng-click="deleteContact(contact._id)">Delete</a></li>
+              <li role="delete"><a href="" class="contact-delete" ng-click="deleteContact(contact._id)">Delete</a></li>
             </ul>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
+
+  <ul uib-pagination direction-links="false" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages" ng-change="pageChanged()"></ul>
 
 </div>

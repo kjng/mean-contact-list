@@ -5,7 +5,8 @@ app.controller('contactListController', ['$scope', 'contacts', function($scope, 
   $scope.currentPage = 1;
 
   $scope.pageChanged = function() {
-    var start = $scope.currentPage * 10 - 1;
+    console.log('currentPage: ', $scope.currentPage);
+    var start = ($scope.currentPage - 1) * 10;
     $scope.currentPageContacts = $scope.contacts.slice(start, start + 10);
   };
 
@@ -40,7 +41,7 @@ app.controller('contactListController', ['$scope', 'contacts', function($scope, 
       $scope.$apply(function() {
         $scope.totalItems = contacts.length;
         $scope.contacts = contacts;
-        $scope.currentPageContacts = contacts;
+        $scope.currentPageContacts = contacts.slice(0, 10);
       });
     });
 
