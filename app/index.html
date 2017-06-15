@@ -10,6 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-route.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
   <script src="app.js"></script>
+  <script src="services/contacts.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -42,101 +43,26 @@
         </thead>
 
         <tbody>
-          <tr>
+          <tr ng-repeat="contact in currentPageContacts">
             <td>
-              <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" class="img-responsive" alt="profile picture for" />
+              <img ng-src="{{ contact.profile_picture }}" class="img-responsive" alt="profile picture for" />
             </td>
-            <td>Kevin</td>
-            <td>Jang</td>
-            <td>kevin.jang.swe@gmail.com</td>
-            <td>7325898089</td>
-            <td>01/01/1900</td>
-            <td>family</td>
-            <td>Bacon ipsum dolor amet picanha leberkas turkey pork belly shank prosciutto kielbasa doner. Capicola turducken ribeye, andouille tenderloin leberkas shoulder frankfurter corned beef beef brisket cow porchetta meatloaf.</td>
+            <td>{{ contact.firstName }}</td>
+            <td>{{ contact.lastName }}</td>
+            <td>{{ contact.email }}</td>
+            <td>{{ contact.phone }}</td>
+            <td>{{ contact.birthdate | date:'MM/dd' }}</td>
+            <td>{{ getGroups(contact.groups) }}</td>
+            <td>{{ contact.comments }}</td>
             <td>
               <div class="btn-group" uib-dropdown>
-                <button class="btn btn-primary">Edit</button>
+                <a class="btn btn-primary" ng-href="#/edit/{{ contact._id }}">Edit</a>
                 <button class="btn btn-primary" uib-dropdown-toggle>
                   <span class="caret"></span>
                   <span class="sr-only">Split button!</span>
                 </button>
                 <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-                  <li role="edit"><a href="#">Edit</a></li>
-                  <li role="delete"><a href="#">Delete</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img src="https://pbs.twimg.com/profile_images/866877277614768128/PKBUqexL_400x400.jpg" class="img-responsive" alt="profile picture for" />
-            </td>
-            <td>Kevin</td>
-            <td>Jang</td>
-            <td>kevin.jang.swe@gmail.com</td>
-            <td>7325898089</td>
-            <td></td>
-            <td>family, friend</td>
-            <td>Cow ground round sirloin, pork cupim burgdoggen boudin drumstick pig short ribs t-bone porchetta tenderloin beef ribs. Ball tip swine flank venison shank.</td>
-            <td>
-              <div class="btn-group" uib-dropdown>
-                <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-primary" uib-dropdown-toggle>
-                  <span class="caret"></span>
-                  <span class="sr-only">Split button!</span>
-                </button>
-                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-                  <li role="edit"><a href="#">Edit</a></li>
-                  <li role="delete"><a href="#">Delete</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" class="img-responsive" alt="profile picture for" />
-            </td>
-            <td>Kevin</td>
-            <td>Jang</td>
-            <td>kevin.jang.swe@gmail.com</td>
-            <td></td>
-            <td>01/01/1900</td>
-            <td>colleage, associate</td>
-            <td>Capicola turducken ribeye, andouille tenderloin leberkas shoulder frankfurter corned beef beef brisket cow porchetta meatloaf. </td>
-            <td>
-              <div class="btn-group" uib-dropdown>
-                <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-primary" uib-dropdown-toggle>
-                  <span class="caret"></span>
-                  <span class="sr-only">Split button!</span>
-                </button>
-                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-                  <li role="edit"><a href="#">Edit</a></li>
-                  <li role="delete"><a href="#">Delete</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <img class="profile-picture" src="http://style.anu.edu.au/_anu/4/images/placeholders/person.png" class="img-responsive" alt="profile picture for" />
-            </td>
-            <td>Kevin</td>
-            <td>Jang</td>
-            <td>kevin.jang.swe@gmail.com</td>
-            <td>7325898089</td>
-            <td></td>
-            <td>associate</td>
-            <td></td>
-            <td>
-              <div class="btn-group" uib-dropdown>
-                <button class="btn btn-primary">Edit</button>
-                <button class="btn btn-primary" uib-dropdown-toggle>
-                  <span class="caret"></span>
-                  <span class="sr-only">Split button!</span>
-                </button>
-                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-                  <li role="edit"><a href="#">Edit</a></li>
+                  <li role="edit"><a ng-href="#/edit/{{ contact._id }}">Edit</a></li>
                   <li role="delete"><a href="#">Delete</a></li>
                 </ul>
               </div>
