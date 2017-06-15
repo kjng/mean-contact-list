@@ -1,4 +1,4 @@
-var app = angular.module('contactList', ['ui.bootstrap']);
+var app = angular.module('contactList', ['ngRoute', 'ui.bootstrap']);
 
 app.controller('mainController', ['$scope', 'contacts', function($scope, contacts) {
 

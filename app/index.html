@@ -4,74 +4,34 @@
   <meta charset="UTF-8">
   <title>Contact List</title>
 
+  <!-- base path for angular-route location -->
+  <base href="/">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-route.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
   <script src="app.js"></script>
+  <script src="routes.js"></script>
   <script src="services/contacts.js"></script>
+  <script src="controllers/contactAdd.js"></script>
+  <script src="controllers/contactEdit.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-default">
     <div class="container">
-      <a class="navbar-brand" href="#">Contact List</a>
+      <a class="navbar-brand" href="/">Contact List</a>
       <ul class="nav navbar-nav">
-        <li><a href='#'>Home</a></li>
-        <li><a href='#/add'>Add a contact</a></li>
+        <li><a href='/'>Home</a></li>
+        <li><a href='/add'>Add a contact</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="container">
 
-    <div ng-controller="mainController">
-
-      <table class="table table-striped table-responsive">
-        <thead>
-          <tr>
-            <th class="col-md-1"><!-- Profile picture --></th>
-            <th class="col-md-1">First</th>
-            <th class="col-md-1">Last</th>
-            <th class="col-md-1">Email</th>
-            <th class="col-md-1">Phone</th>
-            <th class="col-md-1">Birthdate</th>
-            <th class="col-md-1">Groups</th>
-            <th class="col-md-4">Comments</th>
-            <th class="col-md-2"><!-- Edit --></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr ng-repeat="contact in currentPageContacts">
-            <td>
-              <img ng-src="{{ contact.profile_picture }}" class="img-responsive" alt="profile picture for" />
-            </td>
-            <td>{{ contact.firstName }}</td>
-            <td>{{ contact.lastName }}</td>
-            <td>{{ contact.email }}</td>
-            <td>{{ contact.phone }}</td>
-            <td>{{ contact.birthdate | date:'MM/dd' }}</td>
-            <td>{{ getGroups(contact.groups) }}</td>
-            <td>{{ contact.comments }}</td>
-            <td>
-              <div class="btn-group" uib-dropdown>
-                <a class="btn btn-primary" ng-href="#/edit/{{ contact._id }}">Edit</a>
-                <button class="btn btn-primary" uib-dropdown-toggle>
-                  <span class="caret"></span>
-                  <span class="sr-only">Split button!</span>
-                </button>
-                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="split-button">
-                  <li role="edit"><a ng-href="#/edit/{{ contact._id }}">Edit</a></li>
-                  <li role="delete"><a href="#">Delete</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
+    <ng-view></ng-view>
 
   </div>
 </body>
