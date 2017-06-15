@@ -23,8 +23,8 @@ app.factory('contacts', function() {
             lastName: 'Jang',
             email: 'kevin.jang.swe@gmail.com',
             phone: '7325898089',
-            birthdate: new Date(1900, 1, 1),
-            profile_picture: 'http://style.anu.edu.au/_anu/4/images/placeholders/person.png',
+            birthdate: new Date(1900, 0, 1),
+            profile_picture: 'https://static.pexels.com/photos/126407/pexels-photo-126407.jpeg',
             groups: { family: true, friend: false, colleague: true, associate: false },
             comments: ''
           },
@@ -35,7 +35,7 @@ app.factory('contacts', function() {
             email: 'kevin.jang.swe@gmail.com',
             phone: '7325898089',
             birthdate: null,
-            profile_picture: 'http://style.anu.edu.au/_anu/4/images/placeholders/person.png',
+            profile_picture: 'https://static.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg',
             groups: { family: false, friend: false, colleague: false, associate: false },
             comments: 'Bacon ipsum dolor amet picanha leberkas turkey pork belly shank prosciutto kielbasa doner. Capicola turducken ribeye, andouille tenderloin leberkas shoulder frankfurter corned beef beef brisket cow porchetta meatloaf.'
           },
@@ -46,7 +46,7 @@ app.factory('contacts', function() {
             email: 'kevin.jang.swe@gmail.com',
             phone: '7325898089',
             birthdate: null,
-            profile_picture: 'http://style.anu.edu.au/_anu/4/images/placeholders/person.png',
+            profile_picture: '',
             groups: { family: false, friend: false, colleague: false, associate: false },
             comments: 'Bacon ipsum dolor amet picanha leberkas turkey pork belly shank prosciutto kielbasa doner. Capicola turducken ribeye, andouille tenderloin leberkas shoulder frankfurter corned beef beef brisket cow porchetta meatloaf.'
           },
@@ -57,7 +57,7 @@ app.factory('contacts', function() {
             email: 'test@gmail.com',
             phone: '',
             birthdate: null,
-            profile_picture: 'http://style.anu.edu.au/_anu/4/images/placeholders/person.png',
+            profile_picture: '',
             groups: { family: false, friend: false, colleague: false, associate: false },
             comments: 'Bacon ipsum dolor amet picanha leberkas turkey pork belly shank prosciutto kielbasa doner. Capicola turducken ribeye, andouille tenderloin leberkas shoulder frankfurter corned beef beef brisket cow porchetta meatloaf.'
           },
@@ -68,7 +68,7 @@ app.factory('contacts', function() {
             email: 'kevin.jang.swe@gmail.com',
             phone: '7325898089',
             birthdate: new Date(1900, 1, 1),
-            profile_picture: 'http://style.anu.edu.au/_anu/4/images/placeholders/person.png',
+            profile_picture: '',
             groups: { family: false, friend: true, colleague: true, associate: true },
             comments: 'Capicola turducken ribeye, andouille tenderloin leberkas shoulder frankfurter corned beef beef brisket cow porchetta meatloaf.'
           }
