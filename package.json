@@ -7,7 +7,7 @@
   "description": "Small contact list app built with the MEAN stack",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon server/",
+    "start": "nodemon server/"
   },
   "author": "Kevin Jang",
   "repository": {
