@@ -61,7 +61,6 @@ app.controller('contactListController', ['$scope', '$routeParams', '$location', 
 
       // If trying to get to specific page
       if ($routeParams.page) {
-        console.log(Number($routeParams.page));
         $scope.currentPage = Number($routeParams.page);
         $scope.pageChanged();
       }
