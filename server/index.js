@@ -5,11 +5,19 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 // MongoDB connection
+let mongoURL = 'mongodb://localhost/contactlist';
+try {
+  mongoURL = require('./mlab-config');
+}
+catch(err) {
+  console.error(err);
+}
+
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/contactlist');
+mongoose.connect(mongoURL);
 mongoose.connection
   .on('error', err => console.error(err))
-  .once('open', () => console.log('Successfully connected to MongoDB!'));
+  .once('open', () => console.log('Successfully connected to MongoDB: ', mongoURL));
 
 // Express server and routing
 const app = express();
@@ -31,6 +39,6 @@ app.get('*', function(req, res) {
   res.sendFile(path.resolve('app/index.html'));
 });
 
-app.listen(3000, function() {
-  console.log('Server listening on port 3000');
+app.listen(process.env.PORT || 3000, function() {
+  console.log(`Server listening on port ${process.env.PORT || 3000}`);
 });
