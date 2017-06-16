@@ -24,7 +24,7 @@ app.controller('contactListController', ['$scope', '$routeParams', '$location', 
 
   // Updates pagination and db without reloading/making a new get request
   $scope.deleteContact = function(id) {
-    var confirmation = confirm('Do you really wish to delete this contact?');
+    var confirmation = confirm('Are you sure you want to delete this contact?');
     if (confirmation) {
       var index = findIndexById(id);
 
@@ -53,8 +53,8 @@ app.controller('contactListController', ['$scope', '$routeParams', '$location', 
       // If trying to get to specific page
       if ($routeParams.page) {
         $scope.currentPage = Number($routeParams.page);
-        $scope.pageChanged();
       }
+      $scope.pageChanged();
     });
 
 }]);
