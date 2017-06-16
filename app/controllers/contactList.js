@@ -44,11 +44,7 @@ app.controller('contactListController', ['$scope', '$routeParams', '$location', 
 
   // Helper to delete contact
   function findIndexById(id) {
-    for (var i = 0; i < $scope.contacts.length; i++) {
-      if ($scope.contacts[i]._id === id) {
-        return i;
-      }
-    }
+    return $scope.contacts.findIndex(contact => (contact._id === id));
   }
 
   // Get initial contacts
