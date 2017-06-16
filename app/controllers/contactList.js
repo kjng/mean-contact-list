@@ -1,4 +1,4 @@
-app.controller('contactListController', ['$scope', 'contactsFactory', function($scope, contactsFactory) {
+app.controller('contactListController', ['$scope', '$routeParams', '$location', 'contactsFactory', function($scope, $routeParams, $location, contactsFactory) {
 
   // List of all contacts
   $scope.contacts = [];
@@ -13,6 +13,7 @@ app.controller('contactListController', ['$scope', 'contactsFactory', function($
   $scope.pageChanged = function() {
     var start = ($scope.currentPage - 1) * 10;
     $scope.currentPageContacts = $scope.contacts.slice(start, start + 10);
+    $location.path(`/${$scope.currentPage}`);
   };
 
   // Format group object into string
@@ -58,8 +59,12 @@ app.controller('contactListController', ['$scope', 'contactsFactory', function($
       $scope.contacts = contacts;
       $scope.currentPageContacts = contacts.slice(0, 10);
 
-      // contactsFactory.getContactById(contacts[0]._id)
-      //   .then(contact => console.log(contact));
+      // If trying to get to specific page
+      if ($routeParams.page) {
+        console.log(Number($routeParams.page));
+        $scope.currentPage = Number($routeParams.page);
+        $scope.pageChanged();
+      }
     });
 
 }]);

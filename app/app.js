@@ -14,6 +14,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
       templateUrl: 'views/contactEdit.html',
       controller: 'contactEditController'
     })
+    .when('/:page', {
+      templateUrl: 'views/contactList.html',
+      controller: 'contactListController'
+    })
     .otherwise('/');
 
   $locationProvider.html5Mode(true);

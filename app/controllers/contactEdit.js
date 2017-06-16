@@ -1,4 +1,4 @@
-app.controller('contactEditController', ['$scope', '$routeParams', '$location', 'contactsFactory', function($scope, $routeParams, $location, contactsFactory) {
+app.controller('contactEditController', ['$scope', '$routeParams', '$window', 'contactsFactory', function($scope, $routeParams, $window, contactsFactory) {
 
   $scope.isContactAdd = $routeParams.contact_id ? false : true;
 
@@ -8,21 +8,22 @@ app.controller('contactEditController', ['$scope', '$routeParams', '$location', 
     // Handle add contact
     if ($scope.isContactAdd) {
       contactsFactory.addContact($scope.contact)
-        .then(() => $location.path(''));
+        .then(() => $window.history.back());
     } else {
       // Handle edit contact
       contactsFactory.editContact($scope.contact)
-        .then(() => $location.path(''));
+        .then(() => $window.history.back());
     }
-  }
+  };
 
-  // Confirm cancel and prevent link nav if user still wants to edit
-  $scope.cancel = function(event) {
+  // Confirm cancel and go back
+  $scope.cancel = function($event) {
     var confirmation = confirm('Are you sure you want to cancel?')
-    if (!confirmation) {
-      event.preventDefault();
+    if (confirmation) {
+      $event.preventDefault();
+      $window.history.back();
     }
-  }
+  };
 
   // Get prefilled contact fields if editing
   if (!$scope.isContactAdd) {
