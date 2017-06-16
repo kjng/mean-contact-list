@@ -1,5 +1,6 @@
 var app = angular.module('contactList', ['ngRoute', 'ui.bootstrap']);
 
+// Routes
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
@@ -24,6 +25,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 }]);
 
 // Restrict input (used in contact phone number)
+// https://stackoverflow.com/questions/14615236/how-do-i-restrict-an-input-to-only-accept-numbers
 app.directive('restrictTo', function() {
   return {
     restrict: 'A',

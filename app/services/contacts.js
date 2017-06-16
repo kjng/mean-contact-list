@@ -1,4 +1,5 @@
 app.factory('contactsFactory', ['$http', function($http) {
+
   var helpers = {};
 
   helpers.getContacts = function() {
@@ -22,4 +23,5 @@ app.factory('contactsFactory', ['$http', function($http) {
   }
 
   return helpers;
+
 }]);
