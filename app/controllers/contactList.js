@@ -16,15 +16,10 @@ app.controller('contactListController', ['$scope', '$routeParams', '$location', 
     $location.path(`/${$scope.currentPage}`);
   };
 
-  // Format group object into string
+  // Get a string of groups the contact is in
   $scope.getGroups = function(contactGroups) {
-    var groups = [];
-    for (var group in contactGroups) {
-      if (contactGroups[group]) {
-        groups.push(group);
-      }
-    }
-    return groups.join(', ');
+    var groupNames = Object.keys(contactGroups);
+    return groupNames.filter(group => contactGroups[group]).join(', ');
   }
 
   // Updates pagination and db without reloading/making a new get request

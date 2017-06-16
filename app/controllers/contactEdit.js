@@ -1,7 +1,9 @@
 app.controller('contactEditController', ['$scope', '$routeParams', '$window', 'contactsFactory', function($scope, $routeParams, $window, contactsFactory) {
 
+  // Creates a flag so we know if we're editing or adding a contact
   $scope.isContactAdd = $routeParams.contact_id ? false : true;
 
+  // Contact object
   $scope.contact = {};
 
   $scope.submitContactForm = function() {
