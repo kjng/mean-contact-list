@@ -1,4 +1,4 @@
-app.controller('contactListController', ['$scope', 'contacts', function($scope, contacts) {
+app.controller('contactListController', ['$scope', 'contactsFactory', function($scope, contactsFactory) {
 
   // List of all contacts
   $scope.contacts = [];
@@ -31,12 +31,13 @@ app.controller('contactListController', ['$scope', 'contacts', function($scope, 
     var confirmation = confirm('Do you really wish to delete this contact?');
     if (confirmation) {
       var index = findIndexById(id);
-      console.log('placeholder, contact deleted id: ', id);
-      console.log('index in contacts: ', index);
-      // Update pagination
-      $scope.contacts = $scope.contacts.slice(0, index).concat($scope.contacts.slice(index + 1));
-      $scope.totalItems = $scope.totalItems - 1;
-      $scope.pageChanged();
+
+      contactsFactory.deleteContactById(id)
+        .then(() => {
+          $scope.contacts = $scope.contacts.slice(0, index).concat($scope.contacts.slice(index + 1));
+          $scope.totalItems = $scope.totalItems - 1;
+          $scope.pageChanged();
+        });
     }
   }
 
@@ -50,13 +51,15 @@ app.controller('contactListController', ['$scope', 'contacts', function($scope, 
   }
 
   // Get initial contacts
-  contacts.getContacts()
-    .then(function(contacts) {
-      $scope.$apply(function() {
-        $scope.totalItems = contacts.length;
-        $scope.contacts = contacts;
-        $scope.currentPageContacts = contacts.slice(0, 10);
-      });
+  contactsFactory.getContacts()
+    .then(function(res) {
+      const contacts = res.data;
+      $scope.totalItems = contacts.length;
+      $scope.contacts = contacts;
+      $scope.currentPageContacts = contacts.slice(0, 10);
+
+      // contactsFactory.getContactById(contacts[0]._id)
+      //   .then(contact => console.log(contact));
     });
 
 }]);

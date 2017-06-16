@@ -1,7 +1,6 @@
 var app = angular.module('contactList', ['ngRoute', 'ui.bootstrap']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-  console.log('routes js');
   $routeProvider
     .when('/', {
       templateUrl: 'views/contactList.html',
