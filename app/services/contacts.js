@@ -11,9 +11,15 @@ app.factory('contactsFactory', ['$http', function($http) {
     return $http.get(`/api/contact/${id}`);
   }
 
-  helpers.addContact = function(contact) {}
+  helpers.addContact = function(contact) {
+    console.log('Adding new contact.')
+    return $http.post('/api/contact', contact);
+  }
 
-  helpers.editContact = function(contact) {}
+  helpers.editContact = function(contact) {
+    console.log('Editing contact id: ', contact._id);
+    return $http.put(`/api/contact/${contact._id}`, contact);
+  }
 
   helpers.deleteContactById = function(id) {
     console.log('Deleting contact: ', id);

@@ -1,7 +1,7 @@
 <div>
 
   <h2 ng-if="isContactAdd">Add A New Contact</h2>
-  <h2 ng-if="contact_id">Edit Contact {{ contact_id }}</h2>
+  <h2 ng-if="!isContactAdd">Edit Contact</h2>
 
   <hr />
 
@@ -46,7 +46,7 @@
           <label class="checkbox-inline"><input type="checkbox" ng-model="contact.groups.family" />Family</label>
           <label class="checkbox-inline"><input type="checkbox" ng-model="contact.groups.friend" />Friend</label>
           <label class="checkbox-inline"><input type="checkbox" ng-model="contact.groups.colleague" />Colleague</label>
-          <label class="checkbox-inline"><input class="group-checkbox" type="checkbox" ng-model="groups.associate" />Associate</label>
+          <label class="checkbox-inline"><input type="checkbox" ng-model="contact.groups.associate" />Associate</label>
         </div>
       </div>
     </div>
