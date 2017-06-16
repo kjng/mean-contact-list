@@ -22,7 +22,7 @@
     <tbody>
       <tr ng-repeat="contact in currentPageContacts">
         <td>
-          <img ng-src="{{ contact.profile_picture || 'assets/person.png' }}" class="img-responsive img-thumbnail" alt="profile picture for" />
+          <img ng-src="{{ contact.profile_picture || 'assets/default_profile.png' }}" class="img-responsive img-thumbnail" alt="profile picture for" />
         </td>
         <td>{{ contact.firstName }}</td>
         <td>{{ contact.lastName }}</td>
