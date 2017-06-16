@@ -5,7 +5,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 // MongoDB connection
-let mongoURL = 'mongodb://localhost/contactlist';
+let mongoURL = process.env.MLAB_URL ||'mongodb://localhost/contactlist';
 try {
   mongoURL = require('./mlab-config');
 }
