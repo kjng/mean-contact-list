@@ -4,14 +4,10 @@ const morgan = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
 
-// MongoDB connection
+// MongoDB connection, uses config file if it exists (heroku > localhost > mlab)
 let mongoURL = process.env.MLAB_URL ||'mongodb://localhost/contactlist';
-try {
-  mongoURL = require('./mlab-config');
-}
-catch(err) {
-  console.error(err);
-}
+try { mongoURL = require('./mlab-config'); }
+catch(err) { console.error(err); }
 
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoURL);
@@ -39,6 +35,7 @@ app.get('*', function(req, res) {
   res.sendFile(path.resolve('app/index.html'));
 });
 
+// Listens on heroku port or local testing port
 app.listen(process.env.PORT || 3000, function() {
   console.log(`Server listening on port ${process.env.PORT || 3000}`);
 });
